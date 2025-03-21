@@ -146,7 +146,9 @@ class CopperController extends Controller
     return redirect()->back()->with('error', 'Hoodie not found.');
 }
 
-
+   public function ushoiw(){
+    
+   }
 
 
 
