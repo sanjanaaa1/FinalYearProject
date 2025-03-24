@@ -12,7 +12,7 @@ class BrassController extends Controller
 {
     public function  index(){
         
-       dd("hi");
+       //dd("hi");
          $users = Brass::all();
          //dd($users);
            return view('brass',['users' => $users]);

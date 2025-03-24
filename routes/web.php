@@ -93,7 +93,7 @@ Route::post('brass/prou', 'store')->name('men-store');
     Route::post('/brass/update/{id}', [BrassController::class, 'update'])->name('shoe.update');
 
      Route::get('/Home/brass', 'shoeDisplay')->name('shoe-home');
-     Route::get('shoe/detail/{id}',[BrassController::class,'details'])->name('shoe.detail');
+     Route::get('brass/detail/{id}',[BrassController::class,'details'])->name('shoe.detail');
      Route::get('/brass/search', [BrassController::class, 'searchFilter'])->name('shoes.search');
 });
 
@@ -186,7 +186,8 @@ Route::get('/payment/details', [PaymentController::class, 'PaymentDetails'])->na
 Route::get('/payment/message', [PaymentController::class, 'index'])->name('payment.message');
 Route::get('/payment/cash', [PaymentController::class, 'cashIndex'])->name('payment.cashIndex');
 
-Route::get('/add/rent', [RentalController::class, 'index'])->name('rent.index');
+Route::get('/add/rent', [RentalController::class, 'index'])->name('product.rent');
+Route::post('/insert/rent', [RentalController::class, 'store'])->name('rent.add');
 
 
 

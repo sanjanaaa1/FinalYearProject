@@ -29,7 +29,7 @@ Copper Products
 
                                 View More
                                 </a>
-                                <a href="" class="option2">
+                                <a href="{{ route('detail.show', $val->id) }}" class="option2">
                                 Buy Now
                                 </a>
                             </div>

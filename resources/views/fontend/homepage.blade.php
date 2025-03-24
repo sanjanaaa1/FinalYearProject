@@ -13,7 +13,7 @@ Home
     <div class="container">
        <div class="heading_container heading_center">
             <h2>
-                Brass <span>Products</span>
+                Copper <span>Products</span>
             </h2>
        </div>
        <div class="row">
@@ -63,7 +63,7 @@ Home
     <div class="container">
        <div class="heading_container heading_center">
             <h2>
-                Copper<span> Products</span>
+                Brassr<span> Products</span>
             </h2>
        </div>
        <div class="row">

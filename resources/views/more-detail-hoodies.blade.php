@@ -1,7 +1,7 @@
 @extends('fontend.fontend-design')
 
 @section('title')
-     Hoodie
+     Copper
 @endsection
 
 @section('content')
@@ -51,9 +51,37 @@
                 </form>
             @endif
 
-            <a href="#" class="btn btn-success font-weight-bold square-button" style="font-size: 12px;">
-                <i class="fas fa-shopping-bag mr-2" style=" font-size: 20px;"></i>Buy Now
-            </a>
+            <!-- <a href="#" class="btn btn-success font-weight-bold square-button" style="font-size: 12px;">
+                <i class="fas fa-shopping-bag mr-2" style=" font-size: 20px;"></i> rent
+            </a> -->
+            <!-- <form action="{{ route('cart.add') }}" method="POST" class="my-4">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $datas->id }}">
+                    <input type="hidden" name="product_title" value="{{ $datas->title }}">
+                    <input type="hidden" name="product_price" value="{{ $datas->price }}">
+                    <input type="hidden" name="product_image" value="{{ $datas->image }}">
+                    <input type="hidden" name="category_name" value="{{ $datas->category_name }}">
+                    <label for="" class="font-weight-bold">Number of quantity</label>
+
+                    <input type="number" name="product_quantity" value="1" min="1" id="product_quantity" class="smaller-width" style="height: 30px;  width: 70px;font-size: 14px;">
+                    <button type="submit" class="btn btn-primary font-weight-bold square-button">
+                        <i class="fas fa-cart-plus mr-4" style="font-size: 20px;"></i>Add to Cart
+                    </button>
+
+                </form> -->
+            <!-- <a href="{{ route('product.rent') }}" class="btn btn-success font-weight-bold square-button"> -->
+                <form action="{{ route('product.rent', ['id' => $datas->id]) }}">
+                @csrf
+                    <input type="hidden" name="product_id" value="{{ $datas->id }}">
+                    <input type="hidden" name="product_title" value="{{ $datas->title }}">
+                    <input type="hidden" name="product_price" value="{{ $datas->price }}">
+                    <input type="hidden" name="product_image" value="{{ $datas->image }}">
+                    <input type="hidden" name="category_name" value="{{ $datas->category_name }}">
+                    <button type="submit" class="btn btn-primary font-weight-bold square-button">
+                        <i class="fas fa-cart-plus mr-4" style="font-size: 20px;"></i>Rent
+                    </button>
+        
+    </a>
 
         </div>
     </div>
@@ -242,6 +270,24 @@ opacity: 0.4
     padding: 0;
     border-radius: 5px;
 }
+
+.square-button {
+            display: flex;
+            align-items: center;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 12px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .square-button i {
+            margin-right: 8px;
+            font-size: 20px;
+        }
 
     </style>
 

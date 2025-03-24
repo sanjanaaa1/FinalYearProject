@@ -108,10 +108,16 @@ class AdminController extends Controller
 
 
     public function show(){
-        $users = DB::table('users')
-                        ->whereNotNull('number')
-                      ->get();
+        // $users = DB::table('users')
+        //                 ->whereNotNull('number')
+        //               ->get();
+                      //dd($users)
        // $users = DB::select('select * from cutomer');
+
+    //    $users= DB:table(users)->where('is_admin' == 1)->get();
+    $users = DB::table('users')->where('is_admin', '!=', 1)->get();
+   
+
 
 
 

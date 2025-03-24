@@ -20,8 +20,10 @@ class CreateCartProductTable extends Migration
             $table->string('image');
             $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
-            $table->foreignId('product_id_brass')->constrained('brass');
-            $table->foreignId('product_id_copper')->constrained('copper');
+            // $table->foreignId('product_id_brass')->constrained('brasses')->onDelete('cascade');
+            // $table->foreignId('product_id_copper')->constrained('coppers')->onDelete('cascade');
+            
+               
 
 
         });
