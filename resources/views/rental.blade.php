@@ -4,11 +4,13 @@
 <title>Rent Products</title>
 @endsection  
 
+
 @section('content')
 <div class="container mt-5">
+    
 
     <h1 class="text-center mb-4">Rent Products</h1>
-
+    @include('session')
     <div class="row">
         <!-- Left Side: Product Details -->
         <div class="col-md-6">
@@ -39,6 +41,7 @@
                         <div class="form-group">
                             <label for="title">Product</label>
                             <input type="text" name="title" id="title" 
+                            
     class="form-control @error('title') is-invalid @enderror" 
     value="{{ old('title', $rent_data['product_title']) }}">
 
@@ -49,17 +52,19 @@
 
                         <div class="form-group">
                             <label for="rental-duration">Rental Duration (days)</label>
-                            <input type="number" id="rental-duration" name="rental_duration" class="form-control" min="1" placeholder="Enter rental duration">
+                            <input type="number" id="rental-duration" name="rental_duration" class="form-control" min="1" placeholder="Enter rental duration" >
                         </div>
 
                         <div class="form-group">
                             <label for="citizenship">Upload Your Citizenship Photo</label>
-                            <input type="file" name="image" class="form-control-file">
+                            <input type="file" name="image" class="form-control-file" required>
                             @if ($errors->has('image'))
                                 <span class="text-danger">{{ $errors->first('image') }}</span>
                             @endif
                         </div>
-                        <input type="hidden" name="category_name" value="{{ $rent_data['category_name'] }}">
+                        <input type="hidden" name="category_name" value="{{ $rent_data['category_name'] }}" >
+                        <!-- <input type="hidden" name="user_id" value="{{ $rent_data['category_name'] }}"> -->
+                         <input type="hidden" name="user_id" value="{{ auth()->id() }}"> 
                         <div class="form-group text-left">
                             <button type="submit" class="btn btn-primary">Request Rental</button>
                             <button type="button" class="btn btn-secondary" onclick="history.back();">Back</button>

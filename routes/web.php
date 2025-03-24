@@ -188,6 +188,9 @@ Route::get('/payment/cash', [PaymentController::class, 'cashIndex'])->name('paym
 
 Route::get('/add/rent', [RentalController::class, 'index'])->name('product.rent');
 Route::post('/insert/rent', [RentalController::class, 'store'])->name('rent.add');
+Route::get('/show/details', [RentalController::class, 'showRental'])->name('show.rent');
+
+Route::post('/send/notification/{id}', [RentalController::class, 'sendEmail'])->name('send.notification');
 
 
 

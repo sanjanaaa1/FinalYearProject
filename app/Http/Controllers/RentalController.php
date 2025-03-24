@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Rental;
+use App\Models\User;
+use Mail;
+
+use Auth;
 
 class RentalController extends Controller
 {
@@ -16,19 +20,15 @@ class RentalController extends Controller
 
      public function store(Request $request)
 {
-    //dd($request->all());
-
-    // Validation for incoming request
-    //        $request->validate([
-    //     'rental_duration' => 'required|numeric',
-    //     'image' => 'nullable|image|',  // Ensure it's an image and limit size to 2MB max:2048
-    //     'category_name' => 'required|string',
-    //     'Quantity' => 'required|numeric',
-    // ]);
-   // dd("hi");
-
+    // dd($request->all());
+  
+    // dd($userId);
+        try{
+            if (!auth()->check()) {
+                return redirect()->route('customer-login')->with('message','You need to log in to add products to your cart.');
+            }
     // Handle file upload for image if present
-    if ($request->hasFile('image')) {
+    elseif ($request->hasFile('image')) {
        // dd("hi");
         $image = $request->file('image');
         $name = $image->getClientOriginalName();
@@ -39,24 +39,72 @@ class RentalController extends Controller
         //dd("hi");
         $imagePath = null;  // Set image to null if no image is uploaded
     }
+    $userId = Auth::id();
 
-    // Insert the data into the database
     $isInserted = Rental::create([
         
-        'product_title' => $request('title'),  // Make sure to capture title from the request
+        'title' => $request->input('title'),  // Make sure to capture title from the request
         'category_name' => $request->input('category_name'),
         'image' => $imagePath,
         'rental_duration' => $request->input('rental_duration'),
+         'user_id' => $userId,
     ]);
 
     
     if ($isInserted) {
-        dd("success");
-       // return redirect()->route('product.rent')->with('message', 'Inserted successfully');
+       // dd("success");
+        // return redirect()->route('product.rent')->with('message', 'Inserted successfully');
+        return back()->with('message', 'You will get notified once approved');
     } else {
-        //dd("error");
+       // dd("error");
         return back()->with('error', 'Something went wrong');
     }
 }
+catch (Exception $e) {
+    //dd("eror");
+    return redirect()->route('cart.index')->with('error', 'Something went wrong ' . $e->getMessage());
+}
 
 }
+
+
+public function showRental(){
+    $rent = Rental::all();
+    return view ('rent.detailsrental',compact('rent'));
+    // return view('','data' =>$rent);
+}
+
+// public function sendEmail(Request $request, $id ){
+//      $user = User::find($id);
+     
+//     //  $data = $user->pluck('email');
+//     $data = User::where('id', $user->id)->pluck('email');
+//     Mail::send('rent.rentemail', [], function ($message) use ($data) {
+//         $message->to($data);
+//         $message->subject('Rented Succesfull');
+//     });
+
+//     return redirect()->back()->with('success', 'Rent status updated and notification sent successfully.');
+
+
+// }
+public function sendEmail(Request $request, $id)
+{
+    $user = User::find($id);
+
+    if (!$user) {
+        return redirect()->back()->with('error', 'User not found.');
+    }
+    $email = $user->email;
+
+    Mail::send('rent.rentemail', [], function ($message) use ($email) {
+        $message->to($email); // Use the email directly
+        $message->subject('Rented Successful');
+    });
+
+    return redirect()->back()->with('success', 'Rent status updated and notification sent successfully.');
+}
+
+
+}
+

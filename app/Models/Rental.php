@@ -9,7 +9,7 @@ class Rental extends Model
 {
     use HasFactory;
     protected $table =('rentals');
-    public $fillable = ['title', 'rental_duration', 'image' ,'total_price', 'category_name'];
+    public $fillable = ['title', 'rental_duration', 'image' ,'total_price', 'category_name','user_id'];
             
 }
 

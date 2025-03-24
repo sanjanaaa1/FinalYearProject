@@ -129,6 +129,11 @@
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Payment  details</span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href=" {{ route('show.rent') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Rental details</span></a>
+    </li>
 
 
     <!-- Nav Item - Tables -->

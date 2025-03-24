@@ -62,7 +62,7 @@ class CopperController extends Controller
       ->get();
       //dd($data);
 
-        return view('hoodie-show',['data' =>$data]);
+     
     }
 
     public function destroy($id) {
