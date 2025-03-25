@@ -12,17 +12,19 @@ use Auth;
 
 class RentalController extends Controller
 {
+     
+    //  public function index(Request $request){
+    //     return view('rentcheckout.create');
+    //  }
      public function index(Request $request){
         $rent_data= $request->all();
          //dd($rent_data);
          return view ('rental',compact('rent_data'));
      }
+     
 
      public function store(Request $request)
 {
-    // dd($request->all());
-  
-    // dd($userId);
         try{
             if (!auth()->check()) {
                 return redirect()->route('customer-login')->with('message','You need to log in to add products to your cart.');
@@ -68,28 +70,17 @@ catch (Exception $e) {
 }
 
 
+
 public function showRental(){
     $rent = Rental::all();
+    //dd($rent);
     return view ('rent.detailsrental',compact('rent'));
     // return view('','data' =>$rent);
 }
 
-// public function sendEmail(Request $request, $id ){
-//      $user = User::find($id);
-     
-//     //  $data = $user->pluck('email');
-//     $data = User::where('id', $user->id)->pluck('email');
-//     Mail::send('rent.rentemail', [], function ($message) use ($data) {
-//         $message->to($data);
-//         $message->subject('Rented Succesfull');
-//     });
-
-//     return redirect()->back()->with('success', 'Rent status updated and notification sent successfully.');
-
-
-// }
 public function sendEmail(Request $request, $id)
-{
+{     
+    //dd($request->all());
     $user = User::find($id);
 
     if (!$user) {
@@ -97,14 +88,46 @@ public function sendEmail(Request $request, $id)
     }
     $email = $user->email;
 
-    Mail::send('rent.rentemail', [], function ($message) use ($email) {
-        $message->to($email); // Use the email directly
-        $message->subject('Rented Successful');
-    });
+    $order_cancel= $request->status;
 
-    return redirect()->back()->with('success', 'Rent status updated and notification sent successfully.');
+    if($order_cancel == 'hold'){
+        return back()->with ('message', 'update successful');
+    }
+    elseif ($order_cancel == 'deliver'){
+        Mail::send('rent.rentemail', [], function ($message) use ($email) {
+            $message->to($email); // Use the email directly
+            $message->subject('Rented Successful');
+        });
+    
+        return redirect()->back()->with('success', 'Rent status updated and notification sent successfully.');
+    }
+     elseif ($order_cancel == 'cancel'){
+       // dd("hi");
+        Mail::send('rent.cancelemail', [], function ($message) use ($email) {
+            $message->to($email); // Use the email directly
+            $message->subject('Request Cancel');
+        });
+    
+        return redirect()->back()->with('success', 'Rent cancel notification sent successfully.');
+
+     }
+     else{
+        return redirect()->back()->with('error', 'Something went wrong');
+
+    }
+   
 }
+public function rentCheck(Request $request){
+ return view('rentcheckout');
 
+  }
+
+  public function storeRental(Request $request){
+
+    $data= $request->all();
+    dd($data);
+
+  }
 
 }
 

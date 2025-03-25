@@ -34,6 +34,7 @@ use Dompdf\Dompdf;
 // })->name('chart')->middleware('checkAdmin');
 
 Route::controller(AdminController::class)->prefix('/')->group(function () {
+    
     Route::get('/admin-login', 'login')->name('admin.login');
     Route::get('/admin/dashboard', 'dashboard')->name("admin.dashboard")->middleware('checkAdmin');
     Route::post('/admin/login-check', 'userLogin')->name('admin.check');
@@ -41,6 +42,7 @@ Route::controller(AdminController::class)->prefix('/')->group(function () {
     Route::get('/admin/changepassword', 'password')->name('password-update');
     Route::post('/admin/update', 'changepassword')->name('change.password');
     Route::get('/error/page', 'displayerror')->name('error-page');
+    Route::post('/user/edit-profile', 'editProfile')->name('user.edit');
     // Route::get('/userpage', 'userLand')->name('userlogin')
 });
 //--------------------------------------------------------------------------------------
@@ -182,15 +184,16 @@ Route::post('/notify-user/{id}', [OrderController::class, 'notify'])->name('noti
 Route::get('generate-pdf', [OrderController::class, 'generatePDF'])->name('generate-pdf');
 Route::post('/payment/success', [PaymentController::class, 'storePayment'])->name('payment.success');
 Route::get('/payment/details', [PaymentController::class, 'PaymentDetails'])->name('payment.details');
-
 Route::get('/payment/message', [PaymentController::class, 'index'])->name('payment.message');
 Route::get('/payment/cash', [PaymentController::class, 'cashIndex'])->name('payment.cashIndex');
 
+///////////////////////////////// rental ////////////////////////////////////////////////////////////////////
 Route::get('/add/rent', [RentalController::class, 'index'])->name('product.rent');
 Route::post('/insert/rent', [RentalController::class, 'store'])->name('rent.add');
 Route::get('/show/details', [RentalController::class, 'showRental'])->name('show.rent');
-
 Route::post('/send/notification/{id}', [RentalController::class, 'sendEmail'])->name('send.notification');
+Route::post('/rent-checkout', [RentalController::class, 'storeRental'])->name('rentcheckout.create');
+Route::get('/rent-checkout', [RentalController::class, 'rentCheck'])->name('showrent');
 
 
 

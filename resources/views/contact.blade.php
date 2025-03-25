@@ -9,4 +9,4 @@
 <strong>Message: </strong>{{ $data->message }} <br><br>
 
 With regards,
- Outfit tops member
+Artifact Nepal

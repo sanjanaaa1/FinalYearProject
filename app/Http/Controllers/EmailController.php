@@ -9,9 +9,9 @@ use DB;
 class EmailController extends Controller
 {
     public function store(Request $request){
-        $request->validate([
-            'email'=>'required',
-        ]);
+        // $request->validate([
+        //     'email'=>'required',
+        // ]);
         $posts = new Email;
         $posts->email= $request->get('email');
         $posts->save();

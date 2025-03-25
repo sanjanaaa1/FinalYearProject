@@ -68,9 +68,20 @@
                     </button>
 
                 </form>
-                <a href="#" class="btn btn-success font-weight-bold square-button" style="font-size: 12px;">
-                    <i class="fas fa-shopping-bag mr-2" style=" font-size: 25px;"></i>Buy Now
-                </a>
+                <!-- <a href="{{ route('product.rent') }}" class="btn btn-success font-weight-bold square-button" style="font-size: 12px;">
+                    <i class="fas fa-shopping-bag mr-2" style=" font-size: 25px;"></i>Rent
+                </a> -->
+                <form action="{{ route('product.rent', ['id' => $datas->id]) }}">
+                @csrf
+                    <input type="hidden" name="product_id" value="{{ $datas->id }}">
+                    <input type="hidden" name="product_title" value="{{ $datas->title }}">
+                    <input type="hidden" name="product_price" value="{{ $datas->price }}">
+                    <input type="hidden" name="product_image" value="{{ $datas->image }}">
+                    <input type="hidden" name="category_name" value="{{ $datas->category_name }}">
+                    <button type="submit" class="btn btn-primary font-weight-bold square-button">
+                        <i class="fas fa-cart-plus mr-4" style="font-size: 20px;"></i>Rent
+                    </button>
+                    </form>
             </div>
         </div>
     </div>

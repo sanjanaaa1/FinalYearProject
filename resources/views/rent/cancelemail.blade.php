@@ -23,14 +23,9 @@
         
 		<p class="main-content__body" data-lead-id="main-content-body">Here is your renting information</p>
 	</div>
+     Blur not approved ...
 
-	   // add here successfulll
-
-	   inforamtion
-			add your deleivery loaction 
-	   <a href="{{ route('showrent') }}">click here</a>
-	
-	   
+     <a href="{{ route('customer.contactus') }}"> contact admin</a>
 
 	<footer class="site-footer" id="footer">
 		<p class="site-footer__fineprint" id="fineprint">Copyright ©2025 | All Rights Reserved</p>

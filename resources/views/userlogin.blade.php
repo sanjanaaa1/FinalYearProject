@@ -18,8 +18,9 @@
             <!-- <div class="d-flex align-items-center">
                 <div class="rounded-circle" style="width: 100px; height: 100px; background-color: grey;"></div>
             </div>
-            
+         
              -->
+            @include('session')
              <div class="d-flex align-items-center">
              <img src="{{ asset('frontend/images/p1.png') }}" class="rounded-circle" style="width: 100px; height: 100px;" alt="Profile Picture">
             </div>
@@ -28,12 +29,86 @@
                 <p><i class="fas fa-envelope"></i> Email: {{ Auth::user()->email }}</p><br>
                 <p><i class="fas fa-phone"></i> Phone Number: <a href="tel:555-555-5555"><i class="fas fa-phone"></i> {{ Auth::user()->number }}</a></p><br>
                 <a href="{{ route('user.logout') }}" class="btn btn-danger btn-logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Edit Profile</button>
+
             @else
                 <p><i class="fas fa-user"></i> Name: Guest User</p><br>
                 <p><i class="fas fa-envelope"></i> Email: guest@example.com</p><br>
                 <p><i class="fas fa-phone"></i> Phone Number: <a href="tel:555-555-5555"><i class="fas fa-phone"></i> 555-555-5555</a></p><br>
             @endif
         </div>
+<div>
+    <!-- div for edit profile #0c0c0c -->
+    <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit Profile</h4>
+      </div>
+      <div class="modal-body">
+      <form action="{{ route('user.edit') }}" method="POST">
+        @csrf
+
+      <div class="form-group">
+    <label for="Name">Name</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Name" name="name" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email" required>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="Name">Phone Number</label>
+    <input type="text" name="number" pattern="\d{10}" title="Enter exactly 10 digits" required>
+    <input type="hidden" name=" user_id"   value="{{ Auth::user()->id }}" required>
+
+  </div>
+  <!-- <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div> -->
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+
+</form>
+        <!-- <p>Some text in the modal.</p> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    <!-- ends -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 
         <!-- Right Side: Change Password Form -->
         <div class="col-md-6 d-flex flex-column align-items-end">
@@ -80,6 +155,7 @@
 
     </div> <!-- End of row -->
 </div> <!-- End of container -->
+
 
 <!-- Custom Styles -->
 <style>

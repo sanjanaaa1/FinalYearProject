@@ -60,7 +60,8 @@ class CopperController extends Controller
         $data = DB::table('copper')
         ->whereNotNull('image')
       ->get();
-      //dd($data);
+    
+        return view('hoodie-show', compact('data'));
 
      
     }
@@ -75,6 +76,7 @@ class CopperController extends Controller
 
      public function showHooide(){
         $hoodies = Copper::get();
+        //dd($hoodies);
 
         return view('fontend.homehoodies', compact('hoodies'));
 

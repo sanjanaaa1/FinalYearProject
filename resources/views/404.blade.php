@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-	<title>404 HTML Template by Colorlib</title>
+	<title>404 HTML </title>
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
@@ -27,12 +27,14 @@
 <style>
 	* {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
   padding: 0;
   margin: 0;
+  background: #fff;
+  font-family: 'Arvo', serif;
 }
 
 #notfound {
@@ -45,8 +47,8 @@ body {
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .notfound {
@@ -58,7 +60,10 @@ body {
 
 .notfound .notfound-404 {
   position: relative;
-  height: 240px;
+  height: 400px;
+  background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+  background-position: center;
+  background-size: cover;
 }
 
 .notfound .notfound-404 h1 {
@@ -67,25 +72,19 @@ body {
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  font-size: 252px;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size: 80px;
   font-weight: 900;
   margin: 0px;
   color: #262626;
   text-transform: uppercase;
-  letter-spacing: -40px;
-  margin-left: -20px;
-}
-
-.notfound .notfound-404 h1>span {
-  text-shadow: -8px 0px 0px #fff;
+  letter-spacing: -5px;
 }
 
 .notfound .notfound-404 h3 {
   font-family: 'Cabin', sans-serif;
-  position: relative;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
   text-transform: uppercase;
   color: #262626;
@@ -104,12 +103,23 @@ body {
   margin-bottom: 25px;
 }
 
+.link_404 {			 
+  color: #fff !important;
+  padding: 10px 20px;
+  background: #39ac31;
+  margin: 20px 0;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
 @media only screen and (max-width: 767px) {
   .notfound .notfound-404 {
     height: 200px;
   }
   .notfound .notfound-404 h1 {
-    font-size: 200px;
+    font-size: 60px;
   }
 }
 
@@ -118,7 +128,7 @@ body {
     height: 162px;
   }
   .notfound .notfound-404 h1 {
-    font-size: 162px;
+    font-size: 50px;
     height: 150px;
     line-height: 162px;
   }
@@ -126,6 +136,7 @@ body {
     font-size: 16px;
   }
 }
+
 
 </style>
 
@@ -141,6 +152,6 @@ body {
 		</div>
 	</div>
 
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 
 </html>

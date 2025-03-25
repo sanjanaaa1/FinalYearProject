@@ -66,7 +66,12 @@
                 <h2>Your Order was Successful!</h2>
                 <h2>Your  will recieve a call to recive goods</h2>
                 <a href="{{route('generate-pdf')}}" class="btn btn-primary btn-lg">Download Invoice</a>
-                <button class="btn btn-outline-success btn-lg">Back Home</button>
+                <!-- <button class="btn btn-outline-success btn-lg {{route('homePage')}}">Back Home</button>
+                <a href="{{route('homePage')}}" class="btn btn-primary btn-lg"> Back Home</a> -->
+                <button class="btn btn-outline-success btn-lg" onclick="window.location.href='{{ route('homePage') }}'">
+                    Back Home
+                </button>
+
             </div>
         </div>
     </div>

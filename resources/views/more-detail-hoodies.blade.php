@@ -80,6 +80,7 @@
                     <button type="submit" class="btn btn-primary font-weight-bold square-button">
                         <i class="fas fa-cart-plus mr-4" style="font-size: 20px;"></i>Rent
                     </button>
+                    </form>
         
     </a>
 

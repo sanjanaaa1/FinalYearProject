@@ -73,9 +73,11 @@
                 </div>
             </div>
         </div>
-    </div> <!-- End of row -->
+    </div> 
+    <p class="text-center font-weight-bold mt-4">
+    <span class="text-dark">Copper Products: 50rs per day | Brass Products: 100rs per day</span>
+</p>
 
-    <!-- Rental Notice in Red Letters -->
     <p class="text-danger text-center font-weight-bold mt-4">
         In case of damage, you will be charged a fine!!
     </p>

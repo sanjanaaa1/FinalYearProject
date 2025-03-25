@@ -23,13 +23,13 @@
                     <h4 class="mb-4 font-weight-bold">Price: {{ $datas[0]->price }}</h4>
                     <p class="mb-4"><span class="font-weight-bold">Description:</span> {{ $datas[0]->description }}</p>
                     <p class="mb-4 font-weight-bold">Quantity: {{ $datas[0]->Quantity }}</p>
-                    <label for="size" style="font-weight: bold;">Size:</label>
-                    <select name="size" id="size" width: 100px;>
+                    <!-- <label for="size" style="font-weight: bold;">Size:</label> -->
+                    <!-- <select name="size" id="size" width: 100px;>
                     <option value="S">S</option>
                     <option value="M">M</option>
                     <option value="L">L</option>
                     <option value="XL">XL (Larger)</option>
-                    </select> <br> <br>
+                    </select> <br> <br> -->
 
 
                     @if(isset($datas) && is_array($datas))

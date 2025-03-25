@@ -28,7 +28,7 @@
                         <th>Product_Name</th>
                         <th>Rental_Duration</th>
                       
-                        <th>Price</th>
+                        <!-- <th>Price</th> -->
                         <th>Product_Image</th>
                         <th>Category_Name</th>
                         <th>Created_At</th>
@@ -54,18 +54,32 @@
 
                                         @csrf
                                         <select name="status">
-                                            <option value="">Hold</option>
+                                            <option value="hold">Hold</option>
                                             <option value="deliver">Deliver</option>
-                                            <option value="">Cancel</option>
+                                            <option value="cancel">Cancel</option>
                                         </select>
                                         <button type="submit">Update</button>
                                     </form>
-                                </td>
+                                </td>  
+                                   <td>
+                                   @php
+
+                                    $images = is_array(json_decode($show->image)) ? json_decode($show->image) : [$show->image];
+                                    @endphp
+
+                                    @if ($images && count($images) > 0)
+                                    @foreach ($images as $image)
+                                        <img src="{{ asset('storage/citizens/' . $image) }}" width="85%" height="4opx" class="img-fluid rounded shadow">
+                                    @endforeach
+                                    @else
+                                    <p>No images found.</p>
+                                    @endif
+                                   </td>
 
 
-                                </tr>
+                @endforeach
 
-                        @endforeach
+            
                 </tbody>
             </table>
 

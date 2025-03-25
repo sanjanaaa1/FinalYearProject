@@ -272,7 +272,32 @@ class AdminController extends Controller
             return back()->with('error', 'Old password does not match.');
         }
     }
+    public function editProfile(Request $request){     
+        $user_id = Auth::id(); // Get the authenticated user ID
 
+    $validatedData = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email,' . $user_id,
+        'number' => 'required|string|max:20',
+    ]);
+
+  $order=  User::where('id', $user_id)->update([
+        'name' => $validatedData['name'],
+        'email' => $validatedData['email'],
+        'number' => $validatedData['number'],
+    ]);
+        
+        
+        if ($order) {
+            //dd('Success');  
+            return back()->with('message', 'Profile edited Successfully!!');
+        } else {
+            return back()->with('error', 'Something went!!');
+        }
+        
+        
+       
+    }
 
 
 

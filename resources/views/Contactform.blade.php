@@ -24,9 +24,7 @@
             //$.notify("Message addes sucesfully ", "success");
             </script> --}}
 
-            @if(Session::has('success'))
-            <p class="alert alert-success">{{ Session::get('success') }}</p>
-        @endif
+@include('session')
 
 
             <form method="POST" action="{{ route('contact.us-form')}} " id="contactUSForm" >
@@ -46,9 +44,9 @@
                         <div class="form-group">
                             <strong>Email:</strong>
                             <input type="text" name="email" class="form-control" placeholder="Email" value="{{ $post->email }}">
-                            @if ($errors->has('email'))
+                            <!-- @if ($errors->has('email'))
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
-                            @endif
+                            @endif -->
                         </div>
                     </div>
                 </div>
