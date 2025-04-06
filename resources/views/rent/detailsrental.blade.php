@@ -49,10 +49,38 @@
 
                                 <td>{{$show->created_at->format('l, F jS Y')}}</td>
                                 <td>
+                                   @php
+
+                                    $images = is_array(json_decode($show->image)) ? json_decode($show->image) : [$show->image];
+                                    @endphp
+
+                                    @if ($images && count($images) > 0)
+                                    @foreach ($images as $image)
+                                        <img src="{{ asset('storage/citizens/' . $image) }}" width="45%" height="25px" class="img-fluid rounded shadow">
+                                    @endforeach
+                                    @else
+                                    <p>No images found.</p>
+                                    @endif
+                                   </td>
+                                <td>
+                                    
                                 <form method="post" action="{{ route('send.notification', $show->user_id) }}">
+                                <!-- <td>
+                                   @php
+                                    $images = is_array(json_decode($show->image)) ? json_decode($show->image) : [$show->image];
+                                    @endphp
+
+                                    @if ($images && count($images) > 0)
+                                    @foreach ($images as $image)
+                                        <img src="{{ asset('storage/citizens/' . $image) }}" width="15%" height="15px" class="img-fluid rounded shadow">
+                                    @endforeach
+                                    @else
+                                    <p>No images found.</p>
+                                    @endif
+                                   </td> -->
 
 
-                                        @csrf
+                                    @csrf
                                         <select name="status">
                                             <option value="hold">Hold</option>
                                             <option value="deliver">Deliver</option>
@@ -61,7 +89,7 @@
                                         <button type="submit">Update</button>
                                     </form>
                                 </td>  
-                                   <td>
+                                   <!-- <td>
                                    @php
 
                                     $images = is_array(json_decode($show->image)) ? json_decode($show->image) : [$show->image];
@@ -69,12 +97,12 @@
 
                                     @if ($images && count($images) > 0)
                                     @foreach ($images as $image)
-                                        <img src="{{ asset('storage/citizens/' . $image) }}" width="85%" height="4opx" class="img-fluid rounded shadow">
+                                        <img src="{{ asset('storage/citizens/' . $image) }}" width="45%" height="25px" class="img-fluid rounded shadow">
                                     @endforeach
                                     @else
                                     <p>No images found.</p>
                                     @endif
-                                   </td>
+                                   </td> -->
 
 
                 @endforeach

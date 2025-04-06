@@ -118,7 +118,7 @@ public function sendEmail(Request $request, $id)
    
 }
 public function rentCheck(Request $request){
- return view('rentcheckout');
+ return view('rent.rentcheckout');
 
   }
 

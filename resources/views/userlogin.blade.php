@@ -87,7 +87,7 @@
 </div>
 
     <!-- ends -->
-
+xa
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -134,6 +134,7 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+
                     
                     <div class="form-group">
                         <label for="newPassword">New Password:</label>
@@ -289,6 +290,33 @@ h1, h2 {
     display: flex;
     flex-wrap: wrap;
 }
+
+.btn-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn-info, .btn-logout {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: rgb(243, 53, 53) ;
+    color: #fff;
+    font-weight: bold;
+    border: none ;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 20px;
+    box-shadow: 1px 2px 16px grey;
+    margin-top: 20px;
+    white-space: nowrap;
+}
+
+.btn-info:hover, .btn-logout:hover {
+    background-color: rgba(152, 53, 53, 0.9) ;
+}
+
+
 
 .col-md-6 {
     flex: 1;

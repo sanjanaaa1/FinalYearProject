@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cart;
-use App\Models\MenHoodie;
-use App\Models\MenShoe;
+use App\Models\Copper;
+use App\Models\Brass;
 use App\Models\Product;
 
 
@@ -123,8 +123,8 @@ public function increaseQuantity($id)
 {
     try {
 
-        $shoe = MenShoe::all();
-    $hoodies = MenHoodie::all();
+        $shoe = Brass::all();
+    $hoodies = Copper::all();
         $cartItem = Cart::find($id);
 
         if ($cartItem) {
