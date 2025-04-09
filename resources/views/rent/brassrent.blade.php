@@ -16,9 +16,29 @@
         <div class="col-md-6">
             <h2 class="mb-4 font-weight-bold text-primary">Product Name: {{ $rent_data['product_title'] }}</h2>
             
-            <div class="product-container mb-3">
-                <img src="{{ asset('storage/hoodies/'.$rent_data['product_image']) }}" class="img-fluid rounded shadow" alt="Product Image">
-            </div>
+            <!-- <div class="product-container mb-3">
+                <img src="{{ asset('storage/shoes/'.$rent_data['product_image']) }}" class="img-fluid rounded shadow" alt="Product Image">
+            </div> -->
+            <!-- <div class="product-container mb-3">
+                <img src="{{ asset('storage/shoes/'.$rent_data['product_image']) }}" class="img-fluid rounded shadow" alt="Product Image">
+            </div> -->
+            @php
+    $images = json_decode($rent_data['product_image'], true) ?: [];
+@endphp
+
+@if (count($images))
+    @foreach ($images as $image)
+        <img
+            src="{{ asset('storage/shoes/' . $image) }}"
+            alt="Product Image {{ $loop->iteration }}"
+            class="img-fluid rounded shadow"
+            style="width:85%; height:450px;"
+        >
+    @endforeach
+@else
+    <p>No images found.</p>
+@endif
+
 
             <p class="mb-2"><strong>Price:</strong> {{ $rent_data['product_price'] }}</p>
             <p class="mb-2"><strong>Category:</strong> {{ $rent_data['category_name'] }}</p>

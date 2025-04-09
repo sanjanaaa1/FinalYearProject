@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
@@ -150,10 +151,10 @@ class AdminController extends Controller
     }
 
     public function userProfile(){
+        // dd("hi");
 
         return view('userlogin');
     }
-
 
     public function password(Request $request){
         return view('Change-password');
@@ -192,6 +193,7 @@ class AdminController extends Controller
     public function userpassword(){
        return view('user-change-password');
     }
+
 
 
 
@@ -297,6 +299,12 @@ class AdminController extends Controller
         
         
        
+    }
+
+    public function showcustomization(){
+        $cus= Customization::all();
+        dd($cus);
+
     }
 
 

@@ -31,7 +31,7 @@ class GoogleController extends Controller
         $user = Socialite::driver('google')->user();
 
 if (!$user->getEmail()) {
-    echo"something went worng";
+    //echo"something went worng";
 //     return redirect()->route('login')->withErrors(['error' => 'Oops! We could not retrieve your email address from Google. Please try again later.']);
  }
         // dd($user);

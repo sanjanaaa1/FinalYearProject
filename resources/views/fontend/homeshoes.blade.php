@@ -45,7 +45,7 @@ Brass Product
                             // }
                         @endphp
                         @foreach ($data as $d)
-                        <img src="{{asset('storage/shoes/'.$d)}}" alt="Hoodie Image">
+                        <img src="{{asset('storage/shoes/'.$d)}}" alt="Brass Image">
 
                         @endforeach
                         </div>

@@ -26,12 +26,16 @@
                     <tr>
                         <th>Numbers</th>
                         <th>Product_Name</th>
+                        <th>Category_Name</th>
                         <th>Rental_Duration</th>
                       
-                        <!-- <th>Price</th> -->
-                        <th>Product_Image</th>
-                        <th>Category_Name</th>
+                        <th>Price</th>
                         <th>Created_At</th>
+                        <th>Product_Image</th>
+                        <th>Action</th>
+                        
+                        
+
 
                     </tr>
                 </thead>

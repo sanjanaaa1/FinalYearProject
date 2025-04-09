@@ -71,7 +71,7 @@
                 <!-- <a href="{{ route('product.rent') }}" class="btn btn-success font-weight-bold square-button" style="font-size: 12px;">
                     <i class="fas fa-shopping-bag mr-2" style=" font-size: 25px;"></i>Rent
                 </a> -->
-                <form action="{{ route('product.rent', ['id' => $datas->id]) }}">
+                <form action="{{ route('product.brass.rent', ['id' => $datas->id]) }}">
                 @csrf
                     <input type="hidden" name="product_id" value="{{ $datas->id }}">
                     <input type="hidden" name="product_title" value="{{ $datas->title }}">

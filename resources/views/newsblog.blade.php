@@ -12,7 +12,7 @@
     <div class="col-md-6 offset-md-3">
         <div class="card">
             <div class="card-header">
-                <h5> </h5>News And Blog
+                <h5> </h5>Customization
               </div>
             <div class="card-body">
                  <form action="{{route('news.blog')}}"  enctype="multipart/form-data" method="POST">
@@ -20,8 +20,8 @@
                         <p class="alert alert-danger">{{ Session::get('error') }}</p>
                     @endif
                   @csrf
-                  <div class="form-group mb-4">
-                    <label for="name"> News and Blog</label>
+                  <div class="form-group mb-4">z
+                    <label for="name"> Customize Your Product</label>
                     <input type="text" name="title" id="name" class="form-control @error('name') is-invalid @enderror" value="{{old('title')}}">
                        @error('name')
                        <span class="invalid-feedback">

@@ -21,10 +21,20 @@ class RentalController extends Controller
          //dd($rent_data);
          return view ('rental',compact('rent_data'));
      }
+
+     public function brass_index(Request $request){
+        //dd($request->all());
+        
+     $rent_data= $request->all();
+    
+
+         return view ('rent.brassrent',compact('rent_data'));
+     }
      
 
      public function store(Request $request)
 {
+    // dd('hi');
         try{
             if (!auth()->check()) {
                 return redirect()->route('customer-login')->with('message','You need to log in to add products to your cart.');

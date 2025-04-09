@@ -134,6 +134,11 @@
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Rental details</span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href=" {{ route('customization-page') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>customization details</span></a>
+    </li>
 
 
     <!-- Nav Item - Tables -->

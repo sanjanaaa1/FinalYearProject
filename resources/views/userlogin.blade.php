@@ -25,24 +25,27 @@
              <img src="{{ asset('frontend/images/p1.png') }}" class="rounded-circle" style="width: 100px; height: 100px;" alt="Profile Picture">
             </div>
             @if (!empty(Auth::user()))
-                <p><i class="fas fa-user"></i> Name: {{ Auth::user()->name }}</p><br>
-                <p><i class="fas fa-envelope"></i> Email: {{ Auth::user()->email }}</p><br>
-                <p><i class="fas fa-phone"></i> Phone Number: <a href="tel:555-555-5555"><i class="fas fa-phone"></i> {{ Auth::user()->number }}</a></p><br>
-                <a href="{{ route('user.logout') }}" class="btn btn-danger btn-logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Edit Profile</button>
-
+                <p><i class="fas fa-user"></i> Name: {{ Auth::user()->name }}</p>
+            
+                <p><i class="fas fa-envelope"></i> Email: {{ Auth::user()->email }}</p>
+                <p><i class="fas fa-user"></i> Member since: {{ \Carbon\Carbon::parse(Auth::user()->created_at)->format('l, F jS Y')  }}</p>
+                <p><i class="fas fa-phone"></i> Phone Number: <a href="tel:555-555-5555"><i class="fas fa-phone"></i> {{ Auth::user()->number }}</a></p>
+                <div class="btn-container">
+                    <a href="{{ route('user.logout') }}" class="btn btn-danger btn-sm btn-logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Edit Profile</button>
+                    <a href="{{ route('user.orders') }}" class="btn btn-info btn-sm">Order History</a>
+                </div>
             @else
                 <p><i class="fas fa-user"></i> Name: Guest User</p><br>
                 <p><i class="fas fa-envelope"></i> Email: guest@example.com</p><br>
-                <p><i class="fas fa-phone"></i> Phone Number: <a href="tel:555-555-5555"><i class="fas fa-phone"></i> 555-555-5555</a></p><br>
+                <p><i class="fas fa-phone"></i> Phone Number: <a href="tel:555-555-5555"><i class="fas fa-phone"></i> 555-555-5555</a></p><br><br>
             @endif
         </div>
 <div>
-    <!-- div for edit profile #0c0c0c -->
     <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
-    <!-- Modal content-->
+    
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -76,7 +79,6 @@
 </div>
 
 </form>
-        <!-- <p>Some text in the modal.</p> -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -87,7 +89,7 @@
 </div>
 
     <!-- ends -->
-xa
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -154,11 +156,11 @@ xa
             </div>
         </div>
 
-    </div> <!-- End of row -->
-</div> <!-- End of container -->
+    </div> 
+</div> 
 
 
-<!-- Custom Styles -->
+
 <style>
     
     * {
@@ -231,7 +233,7 @@ h1, h2 {
     margin-bottom: 0;
 }
 
-/* Box styling for inputs */
+
 .box {
     border: 1px solid rgb(106, 103, 103);
     height: 40px;
@@ -243,14 +245,12 @@ h1, h2 {
     background: transparent;
 }
 
-/* Heading styles for title */
 h1, h2 {
     font-weight: bold;
-    color: rgb(243, 53, 53);
+    color: #e91e63;
     margin-top: 0px;
 }
 
-/* Logout Button */
 .btn-logout {
     border: 1px transparent;
     color: white;
@@ -259,12 +259,11 @@ h1, h2 {
     margin-bottom: 20px;
 }
 
-/* Change Password Button */
 .btn-primary {
     padding: 10px;
     border-radius: 10px;
     width: 55%;
-    background-color: rgb(243, 53, 53);
+    background-color: rgb(227, 72, 124);
     color: #fff;
     font-weight: bold;
     border: none;
@@ -276,10 +275,9 @@ h1, h2 {
 }
 
 .btn-primary:hover {
-    background-color: rgba(152, 53, 53, 0.9);
+    background-color: rgb(228, 35, 112);
 }
 
-/* Styling for columns and row */
 .col-md-6 p {
     margin-top: 5px;
     font-weight: bold;
@@ -293,30 +291,54 @@ h1, h2 {
 
 .btn-container {
     display: flex;
+    flex-direction: row;
     gap: 10px;
     align-items: center;
+    margin-top: 10px;
 }
 
 .btn-info, .btn-logout {
-    padding: 10px 20px;
-    border-radius: 10px;
-    background-color: rgb(243, 53, 53) ;
+    padding: 8px 15px;
+    border-radius: 5px;
     color: #fff;
     font-weight: bold;
-    border: none ;
+    border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 20px;
-    box-shadow: 1px 2px 16px grey;
-    margin-top: 20px;
+    font-size: 14px;
+    box-shadow: 1px 2px 8px grey;
     white-space: nowrap;
+    margin-bottom: 0;
+    display: inline-block;
 }
 
 .btn-info:hover, .btn-logout:hover {
-    background-color: rgba(152, 53, 53, 0.9) ;
+    background-color:rgb(179, 8, 51);
 }
 
+.btn-info {
+    background-color:rgb(230, 78, 78);
+}
 
+.btn-info:hover {
+    background-color:rgb(199, 51, 29);
+}
+
+.btn-logout {
+    background-color:rgb(223, 71, 86);
+}
+
+.btn-logout:hover {
+    background-color:rgb(186, 34, 49);
+}
+
+.btn-container a:nth-child(3) {
+    background-color:rgb(227, 72, 124);
+}
+
+.btn-container a:nth-child(3):hover {
+    background-color:rgb(228, 35, 112);
+}
 
 .col-md-6 {
     flex: 1;

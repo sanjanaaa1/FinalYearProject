@@ -35,7 +35,7 @@ Copper Products
                             </div>
                         </div>
                         <div class="img-box">
-                            <img src="{{asset('storage/hoodies/'.$val->image)}}" alt="Hoodie Image">
+                            <img src="{{asset('storage/hoodies/'.$val->image)}}" alt="Copper Image">
                         </div>
                         <div class="detail-box">
                             <h5>
@@ -55,6 +55,7 @@ Copper Products
           </a>
        </div>
     </div>
+    
  </section>
 
 

@@ -19,6 +19,9 @@ use App\Http\Controllers\BotManController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RentalController;
+use App\Http\Controllers\CustomizationController;
+use App\Http\Controllers\UserController;
+
 use Dompdf\Dompdf;
 
 
@@ -43,6 +46,7 @@ Route::controller(AdminController::class)->prefix('/')->group(function () {
     Route::post('/admin/update', 'changepassword')->name('change.password');
     Route::get('/error/page', 'displayerror')->name('error-page');
     Route::post('/user/edit-profile', 'editProfile')->name('user.edit');
+    Route::get('/customization/page', 'customization')->name('customization-page');
     // Route::get('/userpage', 'userLand')->name('userlogin')
 });
 //--------------------------------------------------------------------------------------
@@ -69,13 +73,16 @@ Route::get('customer/contactus',[CustomerController::class,'contactus'])->name('
 // Route::get('customer/changepassword',[AdminController::class,'userpassword'])->name('ChangePassword');
 Route::post('customer/change',[AdminController::class,'UserChangePassword'])->name('userChangepassword');
 
-Route::get('user/profile',[AdminController::class,'userProfile'])->name('User.profile');
+Route::get('user/profile',[AdminController::class,'userProfile'])->name('user.profile');
 
  Route::controller(ForgotPasswordController::class)->prefix('/')->group(function () {
  Route::get('forget-password', 'forgetpasswordload')->name('email-forget-password');
  Route::post('customer/forget-password', 'forgetpassword')->name('password-forget');
  Route::get('reset-password/{token}', 'showResetPasswordForm')->name('reset.password.get');
  Route::post('customer/reset-password', 'reset')->name('reset-password');
+
+
+//  Route::get('order/history',[AdminController::class,'orderhistoryuser'])->name('User.orderhistory');
 });
 
 Route::get('/',[HomeController::class,'homepage'])->name('homePage');
@@ -189,25 +196,28 @@ Route::get('/payment/cash', [PaymentController::class, 'cashIndex'])->name('paym
 
 ///////////////////////////////// rental ////////////////////////////////////////////////////////////////////
 Route::get('/add/rent', [RentalController::class, 'index'])->name('product.rent');
+Route::get('/add/brass/rent', [RentalController::class, 'brass_index'])->name('product.brass.rent');
 Route::post('/insert/rent', [RentalController::class, 'store'])->name('rent.add');
 Route::get('/show/details', [RentalController::class, 'showRental'])->name('show.rent');
 Route::post('/send/notification/{id}', [RentalController::class, 'sendEmail'])->name('send.notification');
 Route::post('/rent-checkout', [RentalController::class, 'storeRental'])->name('rentcheckout.create');
 Route::get('/rent-checkout', [RentalController::class, 'rentCheck'])->name('showrent');
 
+////////////////////////////// Customization///////////////////////////////////////////////////////////////// 
+Route::get('/product/customization',[CustomizationController::class, 'index'])->name('product.customization');
+Route::post('/product/customization/submit', [CustomizationController::class, 'submit'])->name('product.customization.submit');
+
+// Feedback
+Route::get('/feedback',[FeedbackController::class, 'index'])->name('feedback.form');
+Route::post('/product/customization/submit', [FeedbackController::class, 'submitFeedback'])->name('feedback.submit');
+
+// User account routes
+// Route::get('/user/profile', 'App\Http\Controllers\UserController@profile')->name('user.profile');
+Route::get('/user/orders',[UserController::class, 'orders'])->name('user.orders');
 
 
 
 
-
-// Route::get('/pdf', function () {
-//     $html = '<h1>Hello, world!</h1>';
-//     $dompdf = new Dompdf();
-//     $dompdf->loadHtml($html);
-//     $dompdf->setPaper('A4', 'landscape');
-//     $dompdf->render();
-//     return $dompdf->stream('document.pdf');
-// });
 
 
 

@@ -86,8 +86,8 @@
             <div id="modal-head">
             </div>
             <div id="modal-body">
-
-                <p><a href="{{route('User.profile')}}" id="changePass">Details</a></p>
+                <p><a href="{{route('user.profile')}}" id="changePass">Details</a></p>
+                <p><a href="{{route('user.orders')}}" id="orderHistory">Order History</a></p>
             </div>
             <div id="modal-footer">
                 <button id="modal-close" type="button" class="btn btn-secondary closeUserModal">Close</button>
